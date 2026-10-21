@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carnes VVH - Catálogo de Cortes</title>
+    <link rel="icon" type="image/x-icon" href="/static/logo_vvh.ico">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Carnes VVH</h1>
+        <!-- Sección de Marca: Logo + Títulos Grandes -->
+        <div class="flex items-center space-x-4 text-center md:text-left">
+            <!-- Logo de Carnes VVH -->
+            <img src="static/logo_vvh.jpg" alt="Carnes VVH" class="logo-small">
+            <div>
+        <p>Cortes selectos y complementos para tu parrilla</p>
+        <button id="btnVerCarrito" class="btn-carrito-header">
+            🛒 Carrito (<span id="cantCarrito">0</span>)
+        </button>
+    </header>
+
+    <main class="container">
+        <div class="filtros-bar">
+            <input type="text" id="inputBuscar" placeholder="Buscar producto...">
+            <select id="selectCategoria">
+                <option value="todas">Todas las categorías</option>
+            </select>
+        </div>
+
+        <h2 id="tituloCatalogo" style="margin-bottom: 1.5rem; text-align: center;">Nuestro Catálogo</h2>
+        <div id="catalogo" class="catalogo-grid"></div>
+    </main>
+
+    <!-- Modal Detalle del Producto -->
+    <div id="modalProducto" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" id="btnCerrarModal">&times;</span>
+            <div id="modalImgContainer" style="text-align: center; margin-bottom: 1rem;"></div>
+            <h3 id="modalTitulo" style="color: #800000; margin-bottom: 0.5rem;"></h3>
+            <p id="modalDescripcion" style="color: #555; margin-bottom: 1rem;"></p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span id="modalPrecio" style="font-size: 1.2rem; font-weight: bold; color: #2e7d32;"></span>
+                <button class="btn-agregar" id="btnAgregarModal">Agregar al Carrito</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Carrito de Compras -->
+    <div id="modalCarrito" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" id="btnCerrarCarrito">&times;</span>
+            <h3 style="color: #800000; margin-bottom: 1rem;">Tu Pedido</h3>
+            <div id="listaCarrito" style="max-height: 250px; overflow-y: auto; margin-bottom: 1rem;"></div>
+            <div style="font-size: 1.2rem; font-weight: bold; text-align: right; margin-bottom: 1rem;">
+                Total: $<span id="totalPrecio">0.00</span>
+            </div>
+            <button id="btnEnviarWhatsapp" class="btn-whatsapp">
+                📲 Pedir por WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
