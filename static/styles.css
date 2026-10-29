@@ -1,414 +1,114 @@
+:root {
+    --vino: #800000;
+    --vino-hover: #630000;
+    --verde: #198754;
+    --verde-hover: #157347;
+    --rojo: #dc3545;
+    --rojo-hover: #b02a37;
+    --dorado: #ffc107;
+    --fondo: #f5f6f8;
+    --texto: #333;
+    --gris: #666;
+    --blanco: #fff;
+    --sombra: 0 4px 14px rgba(0, 0, 0, .13)
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0
 }
 
 body {
-    background-color: #f8f9fa;
-    color: #333;
-}
-
-header {
-    background-color: #800000;
-    color: white;
-    text-align: center;
-    padding: 2rem 1rem;
-    position: relative;
-}
-
-.btn-carrito-header {
-    margin-top: 15px;
-    background-color: #2e7d32;
-    color: white;
-    border: none;
-    padding: 0.6rem 1.4rem;
-    border-radius: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 1rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.btn-carrito-header:hover {
-    background-color: #236327;
+    min-height: 100vh;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif
 }
 
 .container {
-    max-width: 1100px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    width: min(1200px, 94%);
+    margin: auto;
+    padding: 2rem 0
 }
 
-/* Filtros */
-.filtros-bar {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    justify-content: center;
-}
-
-.filtros-bar input, .filtros-bar select {
-    padding: 0.6rem 1rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 1rem;
-}
-
-.filtros-bar input {
-    width: 60%;
-}
-
-/* Grid de Productos */
-.catalogo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-}
-
-.card-producto {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
-}
-
-.card-img {
-    width: 100%;
-    height: 170px;
-    object-fit: cover;
-}
-
-.card-header {
-    padding: 1rem;
-}
-
-.card-header h3 {
-    color: #800000;
-    margin-bottom: 0.5rem;
-}
-
-.card-descripcion {
-    font-size: 0.9rem;
-    color: #666;
-}
-
-.card-footer {
-    padding: 1rem;
-    border-top: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.precio {
-    font-weight: bold;
-    color: #2e7d32;
-    font-size: 1.1rem;
-}
-
-.unidad {
-    font-size: 0.85rem;
-    color: #777;
-}
-
-.btn-agregar {
-    background-color: #800000;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.btn-agregar:hover {
-    background-color: #600000;
-}
-
-/* Modales */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.modal-contenido {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    max-width: 480px;
-    width: 90%;
-    position: relative;
-}
-
-.cerrar-modal {
-    position: absolute;
-    top: 10px; right: 15px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    cursor: pointer;
-    color: #888;
-}
-
-/* Carrito */
-.item-carrito {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.6rem 0;
-    border-bottom: 1px solid #eee;
-}
-
-.btn-whatsapp {
-    background-color: #25D366;
-    color: white;
-    border: none;
-    padding: 0.8rem;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    width: 100%;
-}
-
-.btn-whatsapp:hover {
-    background-color: #1ebc57;
-}
-
-
-/* --- FORMULARIO VERTICAL ADMIN --- */
-.admin-form {
-    background: #ffffff;
-    padding: 2rem;
-    border-radius: 8px;
-    max-width: 480px;         /* Ancho ideal para formulario vertical */
-    margin: 2rem auto;        /* Centra la tarjeta horizontalmente */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    
-    /* FUERZA LA ALINEACIÓN VERTICAL */
-    display: flex;
-    flex-direction: column;
-}
-
-.admin-form input, 
-.admin-form select {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    margin-bottom: 1.2rem;   /* Espaciado entre cada input */
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    box-sizing: border-box;
-    transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.admin-form input:focus,
-.admin-form select:focus {
-    border-color: #800000;
-    outline: none;
-    box-shadow: 0 0 5px rgba(128, 0, 0, 0.3);
-}
-
-.form-title {
-    margin-top: 0;
-    margin-bottom: 1.5rem;
-    color: #800000;
-    font-size: 1.3rem;
-    text-align: center;      /* Título centrado */
-}
-
-.btn-agregar {
-    background-color: #800000;
-    color: white;
-    border: none;
-    padding: 0.85rem;
-    border-radius: 6px;
-    font-weight: bold;
-    font-size: 1rem;
-    cursor: pointer;
-    width: 100%;
-    transition: background 0.2s;
-    margin-top: 0.5rem;
-}
-
-.btn-agregar:hover {
-    background-color: #5a0000;
-}
-
-/* --- TARJETA DE INVENTARIO --- */
-.admin-table-container {
-    background: #ffffff;
-    padding: 2rem;
-    border-radius: 8px;
-    max-width: 850px;
-    margin: 2rem auto;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.table-title {
-    margin-top: 0;
-    margin-bottom: 1.2rem;
-    color: #800000;          /* Guinda Carnes VVH */
-    font-size: 1.3rem;
-}
-
-/* TABLA Y FILAS */
-.table-responsive {
-    overflow-x: auto;
-}
-
-.admin-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: inherit;
-}
-
-.admin-table th {
-    background-color: #f8f9fa;
-    color: #800000;
-    padding: 0.85rem;
-    text-align: left;
-    font-weight: bold;
-    border-bottom: 2px solid #e0e0e0;
-}
-
-.admin-table td {
-    padding: 0.85rem;
-    border-bottom: 1px solid #eeeeee;
-    vertical-align: middle;
-    color: #333333;
-}
-
-.admin-table tbody tr:hover {
-    background-color: #fff9f9; /* Sutil destacado al pasar el cursor */
-}
-
-/* ESTILO DE IMÁGENES DENTRO DE LA TABLA */
-.admin-table-img {
-    width: 48px;
-    height: 48px;
-    object-fit: cover;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    background-color: #f0f0f0;
-}
-
-/* BOTÓN ELIMINAR */
-.btn-eliminar {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 0.45rem 0.9rem;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
-}
-
-.btn-eliminar:hover {
-    background-color: #bd2130;
-    transform: scale(1.03);
-}
-
-/* --- ESTILOS EDICIÓN DE PRODUCTO --- */
-.admin-form-edit {
-    border: 2px solid #ffc107;
-    background: #fffdf5;
-}
-
-.edit-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.form-title-edit {
-    margin: 0;
-    color: #856404;
-    font-size: 1.2rem;
-}
-
-.form-label {
+img {
     display: block;
-    font-weight: bold;
-    font-size: 0.85rem;
-    color: #555;
-    margin-bottom: 0.3rem;
+    max-width: 100%
 }
 
-.btn-cerrar {
-    background: transparent;
-    border: none;
-    color: #dc3545;
-    font-weight: bold;
-    cursor: pointer;
+button,
+input,
+textarea,
+select {
+    font: inherit
 }
 
-.btn-actualizar {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 0.85rem;
-    border-radius: 6px;
-    font-weight: bold;
-    font-size: 1rem;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 0.5rem;
-    transition: background 0.2s;
+button {
+    cursor: pointer
 }
 
-.btn-actualizar:hover {
-    background-color: #218838;
+button:disabled {
+    cursor: not-allowed;
+    opacity: .65
 }
 
-/* BOTONES DE LA TABLA (EDITAR Y ELIMINAR) */
-.action-buttons {
-    display: flex;
-    gap: 0.5rem;
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0
 }
 
-.btn-editar {
-    background-color: #ffc107;
-    color: #212529;
-    border: none;
-    padding: 0.45rem 0.8rem;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.2s;
+[hidden] {
+    display: none !important;
 }
 
-.btn-editar:hover {
-    background-color: #e0a800;
-}
+body{
 
-/* Aplicar en tu styles.css para el cliente */
+    background:
+       
+        url("/static/img/parrilla.jpg");
 
-body {
-    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
-                url('https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1920') no-repeat center center fixed;
     background-size: cover;
-    color: #333;
+
+    background-position: center;
+
+    background-attachment: fixed;
+
 }
 
-.logo-small {
-    width: 200px;          /* Ajusta aquí el tamaño exacto que deseas */
-    height: 200px;         /* Mantén el mismo valor si es circular */
-    object-fit: cover;    /* Evita que la imagen se deforme o estire */
-    
-    /* Propiedades para mantener la nitidez al escalar */
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
+/* ====================================
+   FOOTER
+==================================== */
+
+.site-footer {
+
+    margin-top: 3rem;
+
+    padding: 1rem;
+
+    text-align: center;
+
+    color: #fff;
+
+    background: rgba(
+        0,
+        0,
+        0,
+        .75
+    );
+
+    backdrop-filter: blur(4px);
+
+    font-size: .9rem;
+}
+
+.site-footer p {
+    margin: .25rem 0;
 }

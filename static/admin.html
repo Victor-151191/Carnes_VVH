@@ -1,89 +1,131 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Admin - Carnes VVH</title>
-    <link rel="stylesheet" href="/static/styles.css">
-    <link rel="icon" type="image/x-icon" href="/static/logo_vvh.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración | Carnes VVH</title>
+  <link rel="icon" href="/static/img/logo_vvh.ico">
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/admin.css">
 </head>
 <body>
+  <header class="admin-header">
+    <div class="admin-header-content">
+      <img src="/static/img/logo_vvh.jpg" alt="Carnes VVH" class="admin-logo">
+      <h1>Panel de Administración</h1>
+      <div class="admin-header-actions">
+        <a href="/" class="btn-catalogo">Ver catálogo</a>
+        <button id="btnLogout" class="btn-logout" type="button">Cerrar sesión</button>
+      </div>
+    </div>
+  </header>
 
-    <header>
-        <h1>Panel de Administración - Carnes VVH</h1>
-    </header>
+  <main class="container">
+    <p id="adminMessage" class="admin-message" role="status" aria-live="polite"></p>
 
-    <main class="container">
-        <!-- Formulario 1: Agregar Producto -->
-        <form id="formProducto" class="admin-form">
-            <h3 class="form-title">Agregar Nuevo Producto</h3>
-            
-            <input type="text" id="nombre" placeholder="Nombre del producto" required>
-            <input type="text" id="descripcion" placeholder="Descripción">
-            <input type="number" step="0.01" id="precio" placeholder="Precio ($)" required>
-            <input type="text" id="unidad_medida" placeholder="Unidad (kg, pieza, paquete)" required>
-            <input type="number" step="0.1" id="stock" placeholder="Stock Inicial" required>
-            <input type="number" id="categoria_id" placeholder="ID Categoría (1=Cortes, 2=Marinados, 3=Complementos)" required>
-            <input type="url" id="imagen_url" placeholder="URL de Imagen (https://...)">
-            
-            <button type="submit" class="btn-agregar">Guardar Producto</button>
-        </form>
+    <form id="formProducto" class="admin-form">
+      <div class="form-heading">
+        <div>
+          <p id="formMode" class="form-mode">Modo creación</p>
+          <h2 id="formTitle" class="form-title">Nuevo producto</h2>
+        </div>
+        <button id="btnCancelarEdicion" class="btn-cancelar" type="button" hidden>Cancelar edición</button>
+      </div>
 
-        <!-- Formulario 2: Actualizar Producto (Inicialmente Oculto) -->
-        <form id="formEditarProducto" class="admin-form admin-form-edit" style="display: none;">
-            <div class="edit-header">
-                <h3 class="form-title-edit">Actualizar Producto <span id="edit-id-badge">#0</span></h3>
-                <button type="button" class="btn-cerrar" onclick="cancelarEdicion()">✕ Cancelar</button>
-            </div>
-            
-            <input type="hidden" id="edit_id">
-            <label class="form-label">Nombre:</label>
-            <input type="text" id="edit_nombre" required>
-            
-            <label class="form-label">Descripción:</label>
-            <input type="text" id="edit_descripcion">
-            
-            <label class="form-label">Precio ($):</label>
-            <input type="number" step="0.01" id="edit_precio" required>
-            
-            <label class="form-label">Unidad de Medida:</label>
-            <input type="text" id="edit_unidad_medida" required>
-            
-            <label class="form-label">Stock Disponible:</label>
-            <input type="number" step="0.1" id="edit_stock" required>
-            
-            <label class="form-label">ID Categoría:</label>
-            <input type="number" id="edit_categoria_id" required>
-            
-            <label class="form-label">URL de Imagen:</label>
-            <input type="url" id="edit_imagen_url">
-            
-            <button type="submit" class="btn-actualizar">Guardar Cambios</button>
-        </form>
+      <input id="productoId" type="hidden">
 
-        <!-- Tabla: Inventario de Productos -->
-        <section class="admin-table-container">
-            <h3 class="table-title">Inventario de Productos</h3>
-            <div class="table-responsive">
-                <table class="admin-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Imagen</th>
-                            <th>Nombre</th>
-                            <th>Precio</th>
-                            <th>Unidad</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tablaProductos">
-                        <!-- Carga dinámica vía admin.js -->
-                    </tbody>
-                </table>
-            </div>
-        </section>
-    </main>
+      <div class="form-grid">
+        <div class="field field-wide">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" type="text" placeholder="Nombre del producto" maxlength="150" required>
+        </div>
+        <div class="field field-wide">
+          <label for="descripcion">Descripción</label>
+          <textarea id="descripcion" placeholder="Descripción del producto"></textarea>
+        </div>
+        <div class="field">
+          <label for="precio">Precio</label>
+          <input id="precio" type="number" min="0.01" step="0.01" placeholder="0.00" required>
+        </div>
+        <div class="field">
+          <label for="unidad_medida">Unidad de medida</label>
+          <input id="unidad_medida" type="text" placeholder="kg, pieza, bolsa..." maxlength="30" required>
+        </div>
+        <div class="field">
+          <label for="stock">Stock disponible</label>
+          <input id="stock" type="number" min="0" step="0.01" placeholder="0" required>
+        </div>
+        <div class="field">
+          <label for="categoria">Categoría</label>
+          <input id="categoria" type="text" placeholder="Cortes Premium" maxlength="100" required>
+        </div>
+        <div class="field field-wide">
+          <label for="imagen_url">Ruta o URL de imagen</label>
+          <input id="imagen_url" type="text" placeholder="/static/producto.jpg o https://...">
+        </div>
+      </div>
 
-    <script src="/static/admin.js"></script>
+      <label class="checkbox-label" for="disponible">
+        <input id="disponible" type="checkbox" checked>
+        Disponible para venta
+      </label>
+
+      <button id="btnGuardarProducto" class="btn-agregar" type="submit">Guardar producto</button>
+    </form>
+
+    <section class="admin-table-container">
+    <div class="table-heading">
+        <h2 class="table-title">Pedidos</h2>
+        <span id="contadorPedidos" class="product-count">
+            0 pedidos
+        </span>
+    </div>
+
+    <div id="listaPedidos">
+        <p class="tabla-vacia">
+            Cargando pedidos...
+        </p>
+    </div>
+</section>
+
+    <section class="admin-table-container">
+      <div class="table-heading">
+        <h2 class="table-title">Inventario</h2>
+        <span id="contadorProductos" class="product-count">0 productos</span>
+      </div>
+      <div class="table-responsive">
+        <table class="admin-table">
+          <thead>
+            <tr><th>ID</th><th>Imagen</th><th>Nombre</th><th>Precio</th><th>Unidad</th><th>Stock</th><th>Categoría</th><th>Disponible</th><th>Acciones</th></tr>
+          </thead>
+          <tbody id="tablaProductos"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div id="confirmModal" class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle" aria-hidden="true">
+    <div class="confirm-card">
+      <h2 id="confirmTitle">Confirmar eliminación</h2>
+      <p id="confirmText"></p>
+      <div class="confirm-actions">
+        <button id="btnCancelarEliminar" class="btn-secundario" type="button">Cancelar</button>
+        <button id="btnConfirmarEliminar" class="btn-eliminar" type="button">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>
+        © 2026 Carnes VVH.
+        Todos los derechos reservados.
+    </p>
+
+    <p>
+        Sistema desarrollado por Victor Salinas.
+    </p>
+</footer>
+
+  <script src="/static/admin.js"></script>
 </body>
 </html>

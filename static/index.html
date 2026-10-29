@@ -1,68 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carnes VVH - Catálogo de Cortes</title>
-    <link rel="icon" type="image/x-icon" href="/static/logo_vvh.ico">
-    <link rel="stylesheet" href="/static/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carnes VVH - Catálogo de Cortes</title>
+  <link rel="icon" href="/static/img/logo_vvh.ico">
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/catalogo.css">
 </head>
+
 <body>
-
-    <header>
+  <header class="public-header">
+    <div class="public-header-content">
+      <img src="/static/img/logo3.jpg" alt="Carnes VVH" class="logo-small">
+      <div class="brand-info">
         <h1>Carnes VVH</h1>
-        <!-- Sección de Marca: Logo + Títulos Grandes -->
-        <div class="flex items-center space-x-4 text-center md:text-left">
-            <!-- Logo de Carnes VVH -->
-            <img src="static/logo_vvh.jpg" alt="Carnes VVH" class="logo-small">
-            <div>
         <p>Cortes selectos y complementos para tu parrilla</p>
-        <button id="btnVerCarrito" class="btn-carrito-header">
-            🛒 Carrito (<span id="cantCarrito">0</span>)
-        </button>
-    </header>
-
-    <main class="container">
-        <div class="filtros-bar">
-            <input type="text" id="inputBuscar" placeholder="Buscar producto...">
-            <select id="selectCategoria">
-                <option value="todas">Todas las categorías</option>
-            </select>
-        </div>
-
-        <h2 id="tituloCatalogo" style="margin-bottom: 1.5rem; text-align: center;">Nuestro Catálogo</h2>
-        <div id="catalogo" class="catalogo-grid"></div>
-    </main>
-
-    <!-- Modal Detalle del Producto -->
-    <div id="modalProducto" class="modal">
-        <div class="modal-contenido">
-            <span class="cerrar-modal" id="btnCerrarModal">&times;</span>
-            <div id="modalImgContainer" style="text-align: center; margin-bottom: 1rem;"></div>
-            <h3 id="modalTitulo" style="color: #800000; margin-bottom: 0.5rem;"></h3>
-            <p id="modalDescripcion" style="color: #555; margin-bottom: 1rem;"></p>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span id="modalPrecio" style="font-size: 1.2rem; font-weight: bold; color: #2e7d32;"></span>
-                <button class="btn-agregar" id="btnAgregarModal">Agregar al Carrito</button>
-            </div>
-        </div>
+      </div>
+      <button id="btnVerCarrito" class="btn-carrito-header" type="button">🛒 Carrito (<span
+          id="cantCarrito">0</span>)</button>
     </div>
+  </header>
 
-    <!-- Modal Carrito de Compras -->
-    <div id="modalCarrito" class="modal">
-        <div class="modal-contenido">
-            <span class="cerrar-modal" id="btnCerrarCarrito">&times;</span>
-            <h3 style="color: #800000; margin-bottom: 1rem;">Tu Pedido</h3>
-            <div id="listaCarrito" style="max-height: 250px; overflow-y: auto; margin-bottom: 1rem;"></div>
-            <div style="font-size: 1.2rem; font-weight: bold; text-align: right; margin-bottom: 1rem;">
-                Total: $<span id="totalPrecio">0.00</span>
-            </div>
-            <button id="btnEnviarWhatsapp" class="btn-whatsapp">
-                📲 Pedir por WhatsApp
-            </button>
-        </div>
+  <main class="container">
+    <div class="filtros-bar">
+      <label class="sr-only" for="inputBuscar">Buscar producto</label>
+      <input id="inputBuscar" type="search" placeholder="Buscar producto...">
+      <label class="sr-only" for="selectCategoria">Categoría</label>
+      <select id="selectCategoria">
+        <option value="">Todas las categorías</option>
+      </select>
     </div>
+    <h2 id="tituloCatalogo" class="catalogo-titulo">Nuestro Catálogo</h2>
+    <div id="catalogo" class="catalogo-grid" aria-live="polite"></div>
+  </main>
 
-    <script src="/static/script.js"></script>
+  <div id="modalCarrito" class="modal" role="dialog" aria-modal="true" aria-labelledby="carritoTitulo">
+    <div class="modal-contenido">
+      <button id="btnCerrarCarrito" class="cerrar-modal" type="button" aria-label="Cerrar">&times;</button>
+      <h2 id="carritoTitulo" class="carrito-titulo">Tu pedido</h2>
+      <div id="listaCarrito"></div>
+      <div class="carrito-total">Total: $<span id="totalPrecio">0.00</span> MXN</div>
+      <div class="pedido-datos">
+        <label class="sr-only" for="nombreCliente">Nombre</label>
+        <input id="nombreCliente" type="text" placeholder="Nombre del cliente" maxlength="150">
+        <label class="sr-only" for="telefonoCliente">Teléfono</label>
+        <input id="telefonoCliente" type="tel" placeholder="Teléfono" maxlength="30">
+        <label class="sr-only" for="direccionCliente">Dirección</label>
+        <textarea id="direccionCliente" placeholder="Dirección o indicaciones de entrega" maxlength="300"></textarea>
+      </div>
+      <button id="btnEnviarWhatsapp" class="btn-whatsapp" type="button">📲 Pedir por WhatsApp</button>
+      <p id="mensajePedido" class="mensaje-pedido" role="alert" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>
+        © 2026 Carnes VVH.
+        Todos los derechos reservados.
+    </p>
+
+    <p>
+        Sistema desarrollado por Victor Salinas.
+    </p>
+</footer>
+
+  <script src="/static/script.js"></script>
 </body>
+
 </html>

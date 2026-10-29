@@ -1,0 +1,312 @@
+/* =====================================================
+   HEADER
+===================================================== */
+.admin-header {
+    background: linear-gradient(135deg, var(--vino), #500);
+    color: #fff;
+    padding: 1rem 0;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .22);
+}
+
+.admin-header-content {
+    width: min(1200px, 94%);
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.admin-logo {
+    width: 68px;
+    height: 68px;
+    object-fit: cover;
+    border: 3px solid #fff;
+    border-radius: 50%;
+}
+
+.admin-header h1 {
+    flex: 1;
+    font-size: clamp(1.3rem, 3vw, 2rem);
+}
+
+.admin-header-actions {
+    display: flex;
+    gap: .65rem;
+    flex-wrap: wrap;
+}
+
+.btn-catalogo,
+.btn-logout {
+    padding: .7rem 1rem;
+    border: 0;
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.btn-catalogo { background: var(--verde); }
+.btn-logout { background: var(--rojo); }
+
+/* =====================================================
+   FORMULARIO ÚNICO
+===================================================== */
+.admin-form,
+.admin-table-container {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: var(--sombra);
+}
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: .95rem;
+    max-width: 760px;
+    margin-inline: auto;
+}
+
+.form-heading,
+.table-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.form-mode {
+    margin-bottom: .2rem;
+    color: var(--gris);
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.form-title,
+.table-title { color: var(--vino); }
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .9rem 1rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+}
+
+.field-wide { grid-column: 1 / -1; }
+
+.field label,
+.checkbox-label { font-weight: 650; }
+
+.admin-form input,
+.admin-form textarea {
+    width: 100%;
+    padding: .8rem;
+    border: 1px solid #d5d5d5;
+    border-radius: 8px;
+}
+
+.admin-form textarea {
+    min-height: 95px;
+    resize: vertical;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus {
+    outline: 3px solid rgba(128, 0, 0, .13);
+    border-color: var(--vino);
+}
+
+.checkbox-label {
+    display: inline-flex;
+    width: max-content;
+    align-items: center;
+    gap: .45rem;
+}
+
+.checkbox-label input { width: auto; }
+
+/* =====================================================
+   BOTONES
+===================================================== */
+.btn-agregar,
+.btn-actualizar,
+.btn-cancelar,
+.btn-editar,
+.btn-eliminar,
+.btn-secundario {
+    border-radius: 8px;
+    padding: .65rem .9rem;
+    font-weight: 700;
+}
+
+.btn-agregar,
+.btn-actualizar,
+.btn-cancelar,
+.btn-editar,
+.btn-eliminar { border: 0; }
+
+.btn-agregar { background: var(--vino); color: #fff; }
+.btn-actualizar { background: var(--verde); color: #fff; }
+.btn-cancelar,
+.btn-eliminar { background: var(--rojo); color: #fff; }
+.btn-editar { background: var(--dorado); color: #222; }
+.btn-secundario { border: 1px solid #ccc; background: #fff; }
+
+/* =====================================================
+   TABLA
+===================================================== */
+.product-count {
+    padding: .35rem .65rem;
+    border-radius: 999px;
+    background: #f0f0f0;
+    color: var(--gris);
+    font-size: .85rem;
+    font-weight: 700;
+}
+
+.table-responsive { overflow-x: auto; }
+.admin-table { width: 100%; border-collapse: collapse; white-space: nowrap; }
+.admin-table th,
+.admin-table td {
+    padding: .8rem;
+    border-bottom: 1px solid #e8e8e8;
+    text-align: left;
+    vertical-align: middle;
+}
+.admin-table th { background: #f3f3f3; color: var(--vino); }
+.admin-table-img { width: 52px; height: 52px; object-fit: cover; border-radius: 7px; }
+.action-buttons { display: flex; gap: .45rem; }
+.tabla-vacia { padding: 2rem; color: var(--gris); text-align: center; }
+
+/* =====================================================
+   MODAL Y MENSAJES
+===================================================== */
+.confirm-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, .65);
+}
+
+.confirm-modal.is-open { display: flex; }
+.confirm-card {
+    width: min(420px, 100%);
+    padding: 1.5rem;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .35);
+}
+.confirm-card h2 { color: var(--vino); margin-bottom: .7rem; }
+.confirm-card p { color: #555; }
+.confirm-actions { display: flex; justify-content: flex-end; gap: .7rem; margin-top: 1.2rem; }
+
+.admin-message {
+    min-height: 1.3rem;
+    max-width: 760px;
+    margin: 0 auto 1rem;
+    text-align: center;
+    font-weight: 700;
+}
+.admin-message.error { color: var(--rojo); }
+.admin-message.success { color: var(--verde); }
+
+@media (max-width: 720px) {
+    .admin-header-content { flex-direction: column; text-align: center; }
+    .admin-header-actions { justify-content: center; }
+    .admin-table-container,
+    .admin-form { padding: 1rem; }
+}
+
+@media (max-width: 620px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .field-wide { grid-column: auto; }
+    .form-heading,
+    .table-heading { align-items: flex-start; flex-direction: column; }
+}
+
+/* =====================================================
+   PEDIDOS
+===================================================== */
+
+.pedidos-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.pedido-card {
+    padding: 1rem;
+    border-left: 5px solid var(--vino);
+    border-radius: 10px;
+    background: #fafafa;
+    box-shadow: var(--sombra);
+}
+
+.pedido-card h3 {
+    color: var(--vino);
+    margin-bottom: .5rem;
+}
+
+.pedido-info {
+    display: grid;
+    gap: .4rem;
+}
+
+.pedido-total {
+    margin-top: .6rem;
+    color: var(--verde);
+    font-weight: 800;
+}
+
+.pedido-detalles {
+    margin-top: .8rem;
+    padding-top: .8rem;
+    border-top: 1px solid #ddd;
+}
+
+.pedido-detalles ul {
+    margin-left: 1rem;
+}
+
+/* ====================================
+   ESTADOS DE PEDIDOS
+==================================== */
+
+.estado-badge {
+    display: inline-block;
+    padding: .3rem .7rem;
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 700;
+}
+
+.estado-pendiente {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.estado-preparando {
+    background: #cfe2ff;
+    color: #084298;
+}
+
+.estado-entregado {
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+.estado-cancelado {
+    background: #f8d7da;
+    color: #842029;
+}

@@ -1,0 +1,251 @@
+/* =====================================================
+   PAGINA LOGIN
+===================================================== */
+
+.login-page {
+
+    display: grid;
+
+    min-height: 100vh;
+
+    place-items: center;
+
+    padding: 1rem;
+
+    background:
+        linear-gradient(rgba(0, 0, 0, .70),
+            rgba(0, 0, 0, .70)),
+        url("/static/img/parrilla.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+
+}
+
+/* =====================================================
+   CONTENEDOR
+===================================================== */
+
+.login-container {
+
+    width:
+        min(420px,
+            100%);
+
+}
+
+/* =====================================================
+   TARJETA LOGIN
+===================================================== */
+
+.login-card {
+
+    padding: 2rem;
+
+    border-radius: 16px;
+
+    background: #fff;
+
+    text-align: center;
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, .35);
+
+}
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.login-logo {
+
+    width: 118px;
+
+    height: 118px;
+
+    margin:
+        0 auto 1rem;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+}
+
+/* =====================================================
+   TITULOS
+===================================================== */
+
+.login-card h1 {
+
+    color:
+        var(--vino);
+
+}
+
+.login-subtitle {
+
+    margin:
+        .25rem 0 1.4rem;
+
+    color:
+        var(--gris);
+
+}
+
+/* =====================================================
+   FORMULARIO
+===================================================== */
+
+.login-form {
+
+    display: grid;
+
+    gap: 1rem;
+
+}
+
+.form-group {
+
+    text-align: left;
+
+}
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: .35rem;
+
+    font-weight: 700;
+
+}
+
+.form-group input {
+
+    width: 100%;
+
+    padding: .85rem;
+
+    border:
+        1px solid #d5d5d5;
+
+    border-radius: 8px;
+
+}
+
+.form-group input:focus {
+
+    outline:
+        3px solid rgba(128, 0, 0, .14);
+
+    border-color:
+        var(--vino);
+
+}
+
+/* =====================================================
+   BOTON LOGIN
+===================================================== */
+
+.btn-login {
+
+    border: 0;
+
+    border-radius: 9px;
+
+    padding: .9rem;
+
+    background:
+        var(--vino);
+
+    color: #fff;
+
+    font-weight: 800;
+
+}
+
+.btn-login:hover {
+
+    background:
+        var(--vino-hover);
+
+}
+
+/* =====================================================
+   MENSAJES
+===================================================== */
+
+.login-message {
+
+    min-height: 1.3rem;
+
+    font-weight: 700;
+
+}
+
+.error-message {
+
+    color:
+        var(--rojo);
+
+}
+
+.success-message {
+
+    color:
+        var(--verde);
+
+}
+
+/* =====================================================
+   LINK REGRESAR
+===================================================== */
+
+.back-link {
+
+    display: inline-block;
+
+    margin-top: 1.1rem;
+
+    color:
+        var(--vino);
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+}
+
+.back-link:hover {
+
+    text-decoration: underline;
+
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 480px) {
+
+    .login-card {
+
+        padding: 1.5rem;
+
+    }
+
+    .login-logo {
+
+        width: 100px;
+
+        height: 100px;
+
+    }
+
+}
