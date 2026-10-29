@@ -60,7 +60,7 @@ PRODUCTOS_INICIALES = [
         "unidad_medida": "botella",
         "stock_disponible": 120,
         "categoria": "Complementos",
-        "imagen_url": "salsa.jpg",
+        "imagen_url": "salsa.webp",
         "disponible": True
     }
 ]
