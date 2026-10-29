@@ -1,0 +1,19 @@
+# Entorno
+
+.env
+
+# SQLite
+
+Carnes_VVH.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Python
+
+__pycache__/
+*.pyc
+
+# VS Code
+
+.vscode/
